@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite the associated article and this replication package."
+title: "Replication Materials for Changes in the Russian Ruble’s Oil–Exchange Rate Linkage after the Russia–Ukraine War"
+authors:
+  - family-names: Jung
+    given-names: Nak Hyun
+year: 2026
+version: "1.0.0"
+license: MIT
+repository-code: "https://github.com/<YOUR_GITHUB_ID>/russia-ukraine-ruble-oil-fx-linkage"
+keywords:
+  - Russian ruble
+  - oil price
+  - exchange rate
+  - sanctions
+  - geopolitical shock
+  - structural change
+  - Russia-Ukraine war

@@ -1,0 +1,17 @@
+name: ruble-oil-fx-linkage
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pandas
+  - numpy
+  - statsmodels
+  - scipy
+  - matplotlib
+  - jupyterlab
+  - ipython
+  - pip
+  - pip:
+      - yfinance
+      - arch
+      - tabulate
