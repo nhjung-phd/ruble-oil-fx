@@ -1,44 +1,33 @@
-# ruble-oil-fx
+# Replication Materials: Russian Ruble Oil–Exchange Rate Linkage
 
-Replication package for the study **"Changes in the Russian Ruble’s Oil–Exchange Rate Linkage after the Russia–Ukraine War: An Analysis of Structural Change and Predictive Information."**
+This repository provides replication materials for the study:
 
-This repository provides Python notebooks and scripts for reproducing the empirical analyses reported in the main text, appendix, and supplementary materials.
+**Changes in the Russian Ruble’s Oil–Exchange Rate Linkage after the Russia–Ukraine War: An Analysis of Structural Change and Predictive Information**
 
-## 1. Study Overview
+## Repository status
 
-The study examines whether the Russian ruble’s oil–exchange rate linkage changed after the Russia–Ukraine war. The analysis compares the Russian ruble, Ukrainian hryvnia, and Korean won before and after February 24, 2022, and uses additional comparison currencies to assess whether the Russian pattern is distinct from general oil-importer or resource-exporter currency behavior.
+This repository is intended as a reproducibility package for academic review and publication. The code downloads public financial time-series data from Yahoo Finance using `yfinance`; raw Yahoo Finance data are **not redistributed** in this repository.
 
-Main empirical methods include:
+The final source notebook is designed to be run directly. Tables and figures are displayed **inline inside the notebook**. No `outputs/` folder is included, and no files are written by default.
 
-- OLS regressions by country and period
-- Granger predictive-power tests
-- GARCH(1,1) volatility models
-- Chow structural-break tests
-- Newey–West HAC auxiliary interaction analysis
-- Robustness check excluding the March–May 2020 COVID-19 oil-price collapse period
-- Student-t GARCH sensitivity analysis
-- Supplementary comparison-group analysis
+## Recommended citation
 
-## 2. Data Source
+Pae, Y. H., Ahn, T. B., & Jung, N. H. (2026). *Changes in the Russian Ruble’s Oil–Exchange Rate Linkage after the Russia–Ukraine War: An Analysis of Structural Change and Predictive Information*. Replication materials.
 
-All data are collected from Yahoo Finance through the `yfinance` Python package.
+## Data source
 
-- Data source: Yahoo Finance via `yfinance`
+- Source: Yahoo Finance via `yfinance`
 - Frequency: weekly (`interval="1wk"`)
 - Sample period: January 2019 to April 2026
 - Raw-data download endpoint: May 1, 2026
 - Structural break date: February 24, 2022
 
-Raw Yahoo Finance data are not redistributed in this repository. Users can reproduce the data download by running the notebooks.
-
-## 3. Exchange-Rate Convention
+## Exchange-rate convention
 
 The exchange-rate variables are measured as **local-currency units per U.S. dollar**.
 
-Therefore, an increase in an exchange-rate variable indicates depreciation of the local currency against the U.S. dollar.
-
 | Variable | Yahoo Finance ticker | Interpretation |
-|---|---|---|
+|---|---:|---|
 | RUB | `RUB=X` | Rubles per U.S. dollar |
 | UAH | `UAH=X` | Hryvnias per U.S. dollar |
 | KRW | `KRW=X` | Korean won per U.S. dollar |
@@ -48,133 +37,82 @@ Therefore, an increase in an exchange-rate variable indicates depreciation of th
 | KZT | `KZT=X` | Kazakhstani tenge per U.S. dollar |
 | EUR | `EURUSD=X` | Reported as U.S. dollars per euro; inverted to euros per U.S. dollar before analysis |
 
-This convention is important for interpreting coefficients. For example, if the RUB variable increases, more rubles are required to purchase one U.S. dollar, which indicates ruble depreciation. If the RUB variable decreases, the ruble appreciates against the U.S. dollar.
+Therefore, an increase in an exchange-rate variable indicates depreciation of the local currency against the U.S. dollar.
 
-## 4. Repository Structure
+## Main methods
+
+The analysis includes:
+
+1. OLS regressions by country and period
+2. Granger predictive-power tests
+3. GARCH(1,1) volatility models
+4. Chow structural-break tests
+5. Newey–West HAC auxiliary interaction analysis
+6. Robustness check excluding the March–May 2020 COVID-19 oil-price collapse period
+7. Student-t GARCH sensitivity analysis
+8. Supplementary comparison-group analysis
+
+## Repository structure
 
 ```text
-ruble-oil-fx/
+russia-ukraine-ruble-oil-fx-linkage/
 ├── README.md
-├── README_KR.md
 ├── requirements.txt
 ├── environment.yml
+├── .gitignore
 ├── LICENSE
 ├── CITATION.cff
 ├── notebooks/
-│   ├── 01_full_replication.ipynb
-│   └── 02_appendix_robustness_checks.ipynb
-├── outputs/
-│   ├── tables/
-│   └── figures/
+│   └── 01_full_replication.ipynb
 ├── data/
 │   ├── raw/
 │   └── processed/
+├── docs/
+│   └── paper_title.txt
 └── scripts/
+    └── README.md
 ```
 
-## 5. Notebooks
+## How to run
 
-### `notebooks/01_full_replication.ipynb`
+### Option 1: Google Colab
 
-This notebook reproduces the main empirical analyses:
+Open `notebooks/01_full_replication.ipynb` in Google Colab and run all cells.
 
-- data collection through `yfinance`
-- data preprocessing and exchange-rate transformation
-- descriptive statistics and stationarity tests
-- OLS regressions
-- Granger predictive-power tests
-- GARCH(1,1) models
-- Chow structural-break tests
-- Newey–West auxiliary interaction analysis
-- additional comparison-group analysis
-
-### `notebooks/02_appendix_robustness_checks.ipynb`
-
-This notebook reproduces reviewer-requested robustness checks:
-
-- OLS robustness check excluding the March–May 2020 COVID-19 oil-price collapse period
-- Student-t GARCH sensitivity analysis
-- appendix-style output tables
-
-## 6. How to Run
-
-### Option A. Google Colab
-
-1. Upload the notebooks to Google Colab.
-2. Install required packages if needed.
-3. Run all cells from top to bottom.
-
-### Option B. Local Python Environment
+### Option 2: Local Python environment
 
 ```bash
-git clone https://github.com/<YOUR_GITHUB_ID>/ruble-oil-fx.git
-cd ruble-oil-fx
+git clone https://github.com/<YOUR_GITHUB_ID>/russia-ukraine-ruble-oil-fx-linkage.git
+cd russia-ukraine-ruble-oil-fx-linkage
 python -m venv .venv
 source .venv/bin/activate  # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 jupyter lab
 ```
 
-Then open:
+Then open and run:
 
 ```text
 notebooks/01_full_replication.ipynb
 ```
 
-For robustness checks only, open:
+## Output behavior
 
-```text
-notebooks/02_appendix_robustness_checks.ipynb
-```
+The notebook displays tables and figures inline. It does **not** create an `outputs/` folder and does **not** export CSV, Excel, PNG, or PDF files by default.
 
-## 7. Required Python Packages
+If users want to save tables or figures, they may add their own export commands locally.
 
-The main packages are listed in `requirements.txt` and `environment.yml`.
-
-Core packages include:
-
-- `yfinance`
-- `pandas`
-- `numpy`
-- `statsmodels`
-- `arch`
-- `scipy`
-- `matplotlib`
-- `jupyter`
-
-## 8. Outputs
-
-The notebooks generate tables and figures under:
-
-```text
-outputs/tables/
-outputs/figures/
-```
-
-Output values may vary slightly depending on Yahoo Finance data revisions and package versions.
-
-## 9. Reproducibility Notes
+## Reproducibility notes
 
 - Missing observations are forward- and backward-filled before remaining missing rows are dropped.
 - Variables are transformed into weekly log differences or rates of change.
 - The war date is fixed at February 24, 2022.
 - The maximum lag in the Granger predictive-power tests is one week.
 - The Newey–West HAC maximum lag is five weeks.
-- GARCH estimates can be sensitive to convergence and distributional assumptions; Student-t GARCH sensitivity checks are included.
+- GARCH estimates can be sensitive to distributional assumptions and boundary solutions; Student-t GARCH sensitivity checks are included.
+- Some results may vary slightly if Yahoo Finance revises historical data or if package versions change.
 
-## 10. Data and Code Availability Statement
-
-The data used in this study were collected from Yahoo Finance through the `yfinance` package. The replication code and analysis scripts are provided in this repository for reproducibility. Raw Yahoo Finance data are not redistributed.
-
-## 11. Citation
-
-Please cite the related article and this repository if you use the materials.
-
-```text
-Jung, N. H. (2026). Changes in the Russian Ruble’s Oil–Exchange Rate Linkage after the Russia–Ukraine War: An Analysis of Structural Change and Predictive Information. Replication materials.
-```
-
-## 12. License
+## License
 
 - Code: MIT License
 - Data: downloaded by users from Yahoo Finance; not redistributed
