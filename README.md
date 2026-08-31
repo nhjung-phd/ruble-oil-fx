@@ -1,4 +1,4 @@
-# Replication Materials: Russian Ruble Oil–Exchange Rate Linkage
+# Russian Ruble Oil–Exchange Rate Linkage
 
 This repository provides replication materials for the study:
 
